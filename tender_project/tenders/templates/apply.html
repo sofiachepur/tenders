@@ -1,0 +1,8 @@
+<h2>Подати заявку на: {{ tender.title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="number" name="price" placeholder="Ціна" required><br>
+    <textarea name="comment" placeholder="Коментар"></textarea><br>
+    <button type="submit">Відправити</button>
+</form>

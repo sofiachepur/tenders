@@ -1,0 +1,25 @@
+<h2>Список тендерів</h2>
+
+{% for tender in tenders %}
+  <div style="border:1px solid black; margin:10px; padding:10px;">
+      <h3>{{ tender.title }}</h3>
+      <p>{{ tender.description }}</p>
+      <p>Бюджет: {{ tender.budget }}</p>
+      <p>Дедлайн: {{ tender.deadline }}</p>
+      <p>Статус: {{ tender.get_status_display }}</p>
+      {% if tender.winner %}
+          <p>Переможець: {{ tender.winner.name }}</p>
+      {% else %}
+          <p>Переможець ще не визначений</p>
+
+      {% endif %}
+
+
+       <a href="{% url 'apply_tender' tender.id %}">
+        Подати пропозицію
+    </a>
+
+  </div>
+{% empty %}
+  <p>Тендерів поки немає</p>
+{% endfor %}
